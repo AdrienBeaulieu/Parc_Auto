@@ -95,14 +95,33 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
     }
     
     // Méthodes 
+
+    // Permet de rajouter de l'essence dans sa voiture. Retourne la quantité nouvelle du reservoir
+    // In : Object
+    // In : int 
+    // Out : Int
     this.mettreEssence = function(voiture, litres) {
         if(voiture.getCapReservoir() < litres) throw new Error("Le réservoir est trop petit.");
         if(voiture.getCapReservoir() === voiture.getTauxReservoir()) throw new Error("Le réservoir est déjà plein");
         if(voiture.getTauxReservoir() + litres == voiture.getCapReservoir()) throw new Error("Le reservoir n'est pas assez vide pour cette quantité");
         voiture.setTauxReservoir(voiture.getTauxReservoir() + litres);
         voiture.setMsg("Vous avez ajouté " + litres + " litres à votre réservoir");
+        console.log(msg);
 
         return voiture.getTauxReservoir();
+    }
+
+    // Permet de repeindre une voiture - raphael
+    this.Nouvellecouleur = function (newcouleur) {
+
+
+        if (setCouleur(newcouleur) == couleur) {
+            console.log("Merci pour le rafraîchissement.");
+        }
+        if (setCouleur(newcouleur) !== couleur) {
+
+        }
+
     }
 }
 

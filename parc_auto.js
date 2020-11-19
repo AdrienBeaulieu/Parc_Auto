@@ -13,7 +13,7 @@ console.log(voiture1.getPoids());
 console.log(voiture1.getPuissance());
 console.log(voiture1.getCapReservoir());
 console.log(voiture1.getNbrPlaces());
-console.log(voiture1.mettreEssence(voiture1, 10));
+console.log(voiture1.mettreEssence(voiture1, 5));
 
  
 
