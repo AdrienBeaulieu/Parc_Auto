@@ -159,8 +159,6 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapRÃ
     }
 
     
-
-    
 }
 
 
