@@ -15,6 +15,10 @@ console.log(voiture1.getCapReservoir());
 console.log(voiture1.getNbrPlaces());
 console.log(voiture1.mettreEssence(5));
 
+console.log(voiture1.toString());
+
+console.log(voiture1.seDeplacer(50, 130));
+
  
 
 // // création voiture 2

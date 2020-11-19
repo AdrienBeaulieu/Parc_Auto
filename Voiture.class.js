@@ -45,7 +45,7 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
 
     this.setNbrPlaces = function(unNbrPlaces) {
         if(isNaN(unNbrPlaces)) throw new Error("Veuillez entrer un nombre.");
-        if(unNbrPlaces < 0) throw new Error("Veuillez entrer une valeur de capacité de place positive.");
+        if(unNbrPlaces < 1) throw new Error("Veuillez entrer une valeur de capacité de place supérieur à 1.");
         nbrPlaces = unNbrPlaces;
     }
 
@@ -111,23 +111,56 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
         return tauxReservoir;
     }
 
-    // Permet de repeindre une voiture - raphael
-    this.Nouvellecouleur = function (newcouleur) {
+    this.repeindre = function (newcouleur) {
 
-
-        if (setCouleur(newcouleur) == couleur) {
-            console.log("Merci pour le rafraîchissement.");
+        if (newcouleur == couleur) {
+            msg = ("Merci pour le rafraîchissement.");
         }
-        if (setCouleur(newcouleur) !== couleur) {
-
+        if (newcouleur !== couleur) {
+            couleur = newcouleur;
+            msg = ("La nouvelle couleur est " + newcouleur);
         }
-
+        console.log(msg);
     }
 
+    // Méthode toString();
     this.toString = function() {
         return "Immatriculation : " + immatriculation + " couleur : " + couleur + " poids : " + poids + " puissance : " + puissance + 
         " Capacité du rerservoir : " + capaciteReservoir  + " Nombre de places : " + nbrPlaces + " Assuré : " + this.assure + " Taux rerservoir : " + tauxReservoir;
     }
+
+    // Calcul moyenne consommation véhicule
+    this.calculerMoy = function(distance,consoMoy) {
+        var conso = distance*consoMoy/100
+        console.log(conso);
+        return conso;
+    }
+
+    // Méthode
+    this.seDeplacer = function(distance, vitesseMoy) {
+        if(vitesseMoy < 50) var conso =  this.calculerMoy(distance, 10);
+        if(vitesseMoy < 90 && vitesseMoy >= 50) var conso = this.calculerMoy(distance, 5);
+        if(vitesseMoy < 130 && vitesseMoy >= 90) var conso = this.calculerMoy(distance, 8);
+        if(vitesseMoy >= 130) var conso = this.calculerMoy(distance, 12);
+
+        if(conso > tauxReservoir) msg = "Vous n'avez pas assez d'essence pour ce trajet";
+
+        if(conso == tauxReservoir) {
+            tauxReservoir = tauxReservoir - conso;
+            msg = "Vous avez tout juste ce qu'il faut d'essence pour le trahet";
+        } 
+        if(conso < tauxReservoir) {
+            tauxReservoir = tauxReservoir - conso;
+             msg = "Vous avez assez d'essence pour ce trajet";
+
+        console.log(msg);
+    }
+    return "Vous perdez " + conso + " litres à votre reservoir";
+    }
+
+    
+
+    
 }
 
 
