@@ -100,15 +100,15 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
     // In : Object
     // In : int 
     // Out : Int
-    this.mettreEssence = function(voiture, litres) {
-        if(voiture.getCapReservoir() < litres) throw new Error("Le réservoir est trop petit.");
-        if(voiture.getCapReservoir() === voiture.getTauxReservoir()) throw new Error("Le réservoir est déjà plein");
-        if(voiture.getTauxReservoir() + litres == voiture.getCapReservoir()) throw new Error("Le reservoir n'est pas assez vide pour cette quantité");
-        voiture.setTauxReservoir(voiture.getTauxReservoir() + litres);
-        voiture.setMsg("Vous avez ajouté " + litres + " litres à votre réservoir");
+    this.mettreEssence = function(litres) {
+        if(capaciteReservoir < litres) throw new Error("Le réservoir est trop petit.");
+        if(capaciteReservoir === tauxReservoir) throw new Error("Le réservoir est déjà plein");
+        if(tauxReservoir + litres == capaciteReservoir) throw new Error("Le reservoir n'est pas assez vide pour cette quantité");
+        tauxReservoir = (tauxReservoir + litres);
+        msg = ("Vous avez ajouté " + litres + " litres à votre réservoir");
         console.log(msg);
 
-        return voiture.getTauxReservoir();
+        return tauxReservoir;
     }
 
     // Permet de repeindre une voiture - raphael
@@ -122,6 +122,11 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
 
         }
 
+    }
+
+    this.toString = function() {
+        return "Immatriculation : " + immatriculation + " couleur : " + couleur + " poids : " + poids + " puissance : " + puissance + 
+        " Capacité du rerservoir : " + capaciteReservoir  + " Nombre de places : " + nbrPlaces + " Assuré : " + this.assure + " Taux rerservoir : " + tauxReservoir;
     }
 }
 
