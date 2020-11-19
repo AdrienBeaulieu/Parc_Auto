@@ -5,9 +5,9 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
     var couleur = uneCouleur; // string
     var poids = unPoids; // int
     var puissance = unePuissance; // int
-    var capacitéRéservoir = uneCapRéservoir; //float
+    var capaciteReservoir = uneCapRéservoir; //float
     var nbrPlaces = unNbrPlaces; //float
-    var assuré = false; // bool has a default setting ( false )
+    this.assure = false; // bool has a default setting ( false )
     var msg = "Bienvenue à bord du véhicule"; // string has a defautl setting
 
     this.setImmat = function(uneImmatriculation) {
@@ -24,14 +24,24 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
         couleur = uneCouleur;
     }
 
+    this.setPoids = function(unPoids) {
+        if(isNaN(unPoids)) throw new Error("Veuillez entrer un nombre.");
+        if(unPoids < 0) throw new Error("Veuillez entrer une valeur de poids positive.");
+        poids = unPoids;
+    }
+
     this.setImmat(uneImmatriculation);
     this.setCouleur(uneCouleur);
+    this.setPoids(unPoids);
 
     this.getImmat = function() {
         return immatriculation;
     }
     this.getCouleur = function() {
         return couleur;
+    }
+    this.getPoids = function() {
+        return poids;
     }
 }
 
