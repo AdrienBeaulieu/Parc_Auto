@@ -50,7 +50,7 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR√
     }
 
     this.setMsg = function(message) {
-        if(!msg) throw new Error("Vous ne pouvez pas modifi√© les annonces");
+        if(!msg) throw new Error("");
         msg = message;
     }
 
@@ -130,18 +130,17 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR√
     }
 
     // Calcul moyenne consommation v√©hicule
-    this.calculerMoy = function(distance,consoMoy) {
+    var calculerMoy = function(distance,consoMoy) {
         var conso = distance*consoMoy/100
-        console.log(conso);
         return conso;
     }
 
     // M√©thode
     this.seDeplacer = function(distance, vitesseMoy) {
-        if(vitesseMoy < 50) var conso =  this.calculerMoy(distance, 10);
-        if(vitesseMoy < 90 && vitesseMoy >= 50) var conso = this.calculerMoy(distance, 5);
-        if(vitesseMoy < 130 && vitesseMoy >= 90) var conso = this.calculerMoy(distance, 8);
-        if(vitesseMoy >= 130) var conso = this.calculerMoy(distance, 12);
+        if(vitesseMoy < 50) var conso =  calculerMoy(distance, 10);
+        if(vitesseMoy < 90 && vitesseMoy >= 50) var conso = calculerMoy(distance, 5);
+        if(vitesseMoy < 130 && vitesseMoy >= 90) var conso = calculerMoy(distance, 8);
+        if(vitesseMoy >= 130) var conso = calculerMoy(distance, 12);
 
         if(conso > tauxReservoir) msg = "Vous n'avez pas assez d'essence pour ce trajet";
 
@@ -151,11 +150,9 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR√
         } 
         if(conso < tauxReservoir) {
             tauxReservoir = tauxReservoir - conso;
-             msg = "Vous avez assez d'essence pour ce trajet";
-
+             msg = "Vous avez assez d'essence pour ce trajet";    
+        }
         console.log(msg);
-    }
-    return "Vous perdez " + conso + " litres √† votre reservoir";
     }
 
     

@@ -5,103 +5,191 @@ try {
     console.error(e.message);
 }
 
-console.log(voiture1);
+// création voiture 2
+try {
+    var voiture2 = new Voiture("BB - 001 - BB", "rouge", 800, 120, 61.7, 3)
+} catch (e) {
+    console.error(e.message);
+}
+var tTableau = [voiture1, voiture2];
 
-console.log(voiture1.getCouleur());
-console.log(voiture1.getImmat());
-console.log(voiture1.getPoids());
-console.log(voiture1.getPuissance());
-console.log(voiture1.getCapReservoir());
-console.log(voiture1.getNbrPlaces());
-console.log(voiture1.mettreEssence(5));
-
-console.log(voiture1.toString());
-
-console.log(voiture1.seDeplacer(50, 130));
-
+for(let i = 0; i < tTableau.length; i++) {
+    
+    console.log("\nVoiture " + (i+1));
+    console.log(tTableau[i].getmsg());
+    console.log(tTableau[i].toString());
+    console.log(tTableau[i].mettreEssence(5));
+    voiture1.repeindre("violet");
+    voiture1.seDeplacer(50, 130);
+}
  
 
-// // création voiture 2
-// try {
-//     var voiture2 = new Voiture("BB - 001 - BB", "rouge", 800, 120, 61.7, 3)
-// } catch (e) {
-//     console.error(e.message);
-// }
+//jeux de test
 
-// // création voiture 3
-// try {
-//     var voiture3 = new Voiture("CC - 002 - CC", "noire", 850, 113, 54.1, 3)
-// } catch (e) {
-//     console.error(e.message);
-// }
+console.log("\ncouleur");
+// si c'est un nombre
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", 0);
 
-// // création voiture 4
-// try {
-//     var voiture4 = new Voiture("DD - 003 - DD", "grise", 1200, 103, 55.4, 5)
-// } catch (e) {
-//     console.error(e.message);
-// }
-
-// // Affichage des voitures
-// console.log(voiture1.toString());
-// console.log(voiture2.toString());
-// console.log(voiture3.toString());
-// console.log(voiture4.toString());
-
-// // Création d'un tableau stockant les voitures
-// var tTableau = [voiture1, voiture2, voiture3, voiture4];
-// console.table(tTableau);
-// // Boucle affichage si la voiture est assurée
-// for (let i = 0; i < tTableau.length; i++) {
-//     console.log(tTableau[i].assure);
-
-// }
-
-// //jeux de test
+} catch (e) {
+    console.error(e.message);
+}
 
 
-// // si c'est un nombre
-// try {
-//     var voiture1 = new Voiture("AA - 000 - AA", 0);
+//rien
 
-// } catch (e) {
-//     console.error(e.message);
-// }
+try {
+    var voiture1 = new Voiture("AA - 000 - AA");
 
+} catch (e) {
+    console.error(e.message);
+}
 
-// //rien
+//deux caractères
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "b", 750, 110, 50.3, 5);
 
-// try {
-//     var voiture1 = new Voiture("AA - 000 - AA");
-
-// } catch (e) {
-//     console.error(e.message);
-// }
-
-// //deux caractères
-// try {
-//     var voiture1 = new Voiture("AA - 000 - AA", "bl", 750, 110, 50.3, 5);
-
-// } catch (e) {
-//     console.error(e.message);
-// }
+} catch (e) {
+    console.error(e.message);
+}
 
 
-// // meme couleur
-// try {
-//     var voiture1 = new Voiture("AA - 000 - AA", "bleu", 750, 110, 50.3, 5);
+// meme couleur
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "bleu", 750, 110, 50.3, 5);
 
-// } catch (e) {
-//     console.error(e.message);
-// }
+} catch (e) {
+    console.error(e.message);
+}
 
-// // nouvelle couleur
-// try {
-//     var voiture1 = new Voiture("AA - 000 - AA", "bleu", 750, 110, 50.3, 5);
+// nouvelle couleur
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", 750, 110, 50.3, 5);
 
-// } catch (e) {
-//     console.error(e.message);
-// }
+} catch (e) {
+    console.error(e.message);
+}
 
+//POIDS
+console.log("\npoids");
+//si vide
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert");
+} catch (e) {
+    console.error(e.message);
+}
 
-// // alert("ok");
+//si negatif
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", -1);
+
+} catch (e) {
+    console.error(e.message);
+}
+
+//si isNan
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", "ok");
+
+} catch (e) {
+    console.error(e.message);
+}
+
+//PUISSANCE
+console.log("\npuissance");
+//si vide
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", 750);
+
+} catch (e) {
+    console.error(e.message);
+}
+
+//si isNan
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", 750, "ok");
+
+} catch (e) {
+    console.error(e.message);
+}
+
+//si neg
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", 750, -1);
+
+} catch (e) {
+    console.error(e.message);
+}
+
+//RESERVOIR
+console.log("\nreservoir");
+//rien
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", 750, 110);
+
+} catch (e) {
+    console.error(e.message);
+}
+//isNan
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", 750, 110, "ok");
+
+} catch (e) {
+    console.error(e.message);
+}
+//neg
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", 750, 110, -1);
+
+} catch (e) {
+    console.error(e.message);
+}
+
+//NBPLACE
+console.log("\nplace");
+//vide
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", 750, 110, 50.3);
+
+} catch (e) {
+    console.error(e.message);
+}
+//isNan
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", 750, 110, 50.3, "ok");
+
+} catch (e) {
+    console.error(e.message);
+}
+
+//en dessous de 1
+try {
+    var voiture1 = new Voiture("AA - 000 - AA", "vert", 750, 110, 50.3, 0);
+
+} catch (e) {
+    console.error(e.message);
+}
+
+//PLAQUE IMMAT
+console.log("\nimmat");
+// <2 caractère
+try {
+    var voiture1 = new Voiture("d", "vert", 750, 110, 50.3, 0);
+
+} catch (e) {
+    console.error(e.message);
+}
+//si nbr
+try {
+    var voiture1 = new Voiture(15);
+
+} catch (e) {
+    console.error(e.message);
+}
+//si vide
+try {
+    var voiture1 = new Voiture();
+
+} catch (e) {
+    console.error(e.message);
+}
