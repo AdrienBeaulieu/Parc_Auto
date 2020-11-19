@@ -48,7 +48,12 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR√
         nbrPlaces = unNbrPlaces;
     }
 
+    this.setMsg = function(msg) {
+        if(msg) throw new Error("Vous ne pouvez pas modifi√© les annonces");
+        // Empeche la modification des msg depuis le programme principal.
+    }
 
+    // Set
     this.setImmat(uneImmatriculation);
     this.setCouleur(uneCouleur);
     this.setPoids(unPoids);
@@ -57,6 +62,7 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR√
     this.setNbrPlaces(unNbrPlaces);
 
 
+    // GETS
     this.getImmat = function() {
         return immatriculation;
     }
@@ -75,7 +81,11 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR√
     this.getNbrPlaces = function() {
         return nbrPlaces;
     }
+    this.getmsg = function() {
+        return msg;
+    }
     
+    // M√©thodes 
 }
 
 
