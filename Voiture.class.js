@@ -36,10 +36,16 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
         puissance = unePuissance;
     }
 
-    this.setCapaciteReservoir = function() {
+    this.setCapaciteReservoir = function(uneCapRéservoir) {
         if(isNaN(uneCapRéservoir)) throw new Error("Veuillez entrer un nombre.");
         if(uneCapRéservoir < 0) throw new Error("Veuillez entrer une valeur de capacité de réservoir positive.");
         capaciteReservoir = uneCapRéservoir;
+    }
+
+    this.setNbrPlaces = function(unNbrPlaces) {
+        if(isNaN(unNbrPlaces)) throw new Error("Veuillez entrer un nombre.");
+        if(unNbrPlaces < 0) throw new Error("Veuillez entrer une valeur de capacité de place positive.");
+        nbrPlaces = unNbrPlaces;
     }
 
 
@@ -48,6 +54,7 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
     this.setPoids(unPoids);
     this.setPuissance(unePuissance);
     this.setCapaciteReservoir(uneCapRéservoir);
+    this.setNbrPlaces(unNbrPlaces);
 
 
     this.getImmat = function() {
@@ -64,6 +71,9 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
     }
     this.getCapReservoir = function() {
         return capaciteReservoir;
+    }
+    this.getNbrPlaces = function() {
+        return nbrPlaces;
     }
     
 }
