@@ -26,13 +26,21 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapRÃ
 
     this.setPoids = function(unPoids) {
         if(isNaN(unPoids)) throw new Error("Veuillez entrer un nombre.");
-        if(unPoids < 0) throw new Error("Veuillez entrer une valeur de poids positive.");
+        if(unPoids < 0) throw new Error("Veuillez entrer une valeur de puissance positive.");
         poids = unPoids;
     }
+
+    this.setPuissance = function(unePuissance) {
+        if(isNaN(unePuissance)) throw new Error("Veuillez entrer un nombre.");
+        if(unePuissance < 0) throw new Error("Veuillez entrer une valeur de puissance positive.");
+    }
+
 
     this.setImmat(uneImmatriculation);
     this.setCouleur(uneCouleur);
     this.setPoids(unPoids);
+    this.setPuissance(unePuissance);
+
 
     this.getImmat = function() {
         return immatriculation;
@@ -43,8 +51,10 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapRÃ
     this.getPoids = function() {
         return poids;
     }
+    this.getPuissance = function() {
+        return puissance;
+    }
 }
-
 
 
 
