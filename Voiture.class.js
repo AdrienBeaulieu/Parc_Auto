@@ -9,6 +9,7 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
     var nbrPlaces = unNbrPlaces; //float
     this.assure = false; // bool has a default setting ( false )
     var msg = "Bienvenue à bord du véhicule"; // string has a defautl setting
+    var tauxReservoir = 5;
 
     this.setImmat = function(uneImmatriculation) {
         if(!uneImmatriculation) throw new Error("Veuillez entrer une Immatriculation");
@@ -48,10 +49,15 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
         nbrPlaces = unNbrPlaces;
     }
 
-    this.setMsg = function(msg) {
-        if(msg) throw new Error("Vous ne pouvez pas modifié les annonces");
-        // Empeche la modification des msg depuis le programme principal.
+    this.setMsg = function(message) {
+        if(!msg) throw new Error("Vous ne pouvez pas modifié les annonces");
+        msg = message;
     }
+
+    this.setTauxReservoir = function(NewtauxReservoir) {
+        tauxReservoir = NewtauxReservoir; 
+    }
+
 
     // Set
     this.setImmat(uneImmatriculation);
@@ -84,8 +90,20 @@ function Voiture(uneImmatriculation, uneCouleur, unPoids, unePuissance, uneCapR�
     this.getmsg = function() {
         return msg;
     }
+    this.getTauxReservoir = function() {
+        return tauxReservoir;
+    }
     
     // Méthodes 
+    this.mettreEssence = function(voiture, litres) {
+        if(voiture.getCapReservoir() < litres) throw new Error("Le réservoir est trop petit.");
+        if(voiture.getCapReservoir() === voiture.getTauxReservoir()) throw new Error("Le réservoir est déjà plein");
+        if(voiture.getTauxReservoir() + litres == voiture.getCapReservoir()) throw new Error("Le reservoir n'est pas assez vide pour cette quantité");
+        voiture.setTauxReservoir(voiture.getTauxReservoir() + litres);
+        voiture.setMsg("Vous avez ajouté " + litres + " litres à votre réservoir");
+
+        return voiture.getTauxReservoir();
+    }
 }
 
 
